@@ -33,7 +33,7 @@ class UtilityFunctions:
 
         @return the clamped value
         """
-        return max(min_value, min(value, max_value))
+	pass
 
 
 class ObjectSpawner(pygame.sprite.Sprite):
