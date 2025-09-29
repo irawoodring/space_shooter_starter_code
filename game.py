@@ -20,16 +20,20 @@ class GameEngine:
         self.__running = True
 
     def handle_events(self):
-        # Student to do
-        pass
+        events = pygame.event.get()
+        for event in events:
+            if event.type == pygame.QUIT:
+                self.__running = False
+            elif event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
+                self.__running = False
+        return events
     
     def get_running(self):
-        # Student to do
-        pass
+        return self.__running
     
     def set_running(self, running):
-        # Student to do
-        pass
+        if isinstance(running, bool):
+            self.__running = running
 
     def run(self):
         # Uncomment these lines if you want music!
