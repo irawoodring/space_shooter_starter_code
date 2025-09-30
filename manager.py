@@ -7,7 +7,10 @@ from player import Player
 
 class GameManager:
     def __init__(self, engine):
-        pass
+        # Your code here
+
+        self.__setup_groups()
+        self.__setup_hud()
 
     def __setup_groups(self):
         # Add sprite groups
