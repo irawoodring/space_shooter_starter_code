@@ -36,13 +36,30 @@ class GameEngine:
             self.__running = running
 
     def run(self):
-        # Uncomment these lines if you want music!
         #pygame.mixer.music.load("./assets/cosmic_annihilation.mp3")
         #pygame.mixer.music.set_volume(0.3)
-        #pygame.mixer.music.play(-1)
+        #ßpygame.mixer.music.play(-1)
         while self.__running:
-            # Student to do
-            pass
+            dt = self.__clock.tick(60) / 1000.0
+            dt = dt * self.__manager.speed_multiplier
+            self.handle_events()
+
+            # Update all sprites
+            self.__manager.get_group('all').update(dt)
+            self.__manager.get_group('starfield').update(dt)
+
+            self.__manager.update(dt)
+
+            # Draw everything
+            self.__screen.fill((30, 30, 30))
+            self.__manager.get_group('starfield').draw(self.__screen)
+            self.__manager.get_group('all').draw(self.__screen)
+
+            pygame.display.flip()
+
+        pygame.quit()
+        sys.exit()
+
 
 
 if __name__ == "__main__":
