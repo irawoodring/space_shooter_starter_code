@@ -36,12 +36,12 @@ class GameManager:
     def update(self, dt):
         self.__time += dt
         self.__time_hud.change_text(f"Time: {self.__time:.2f}")
-        self.__health_hud.change_text(f"Health: {self.__player.health}")
-        self.__lives_hud.change_text(f"Lives: {self.__player.lives}")
+        self.__health_hud.change_text(f"Health: {self.__player.get_health()}")
+        self.__lives_hud.change_text(f"Lives: {self.__player.get_lives()}")
 
         self.__elapsed_time += dt
         if self.__elapsed_time >= 10.0:
             self.__elapsed_time -= 10.0
             self.__speed_multiplier += 0.1
-        if self.__player.lives < 0:
+        if self.__player.get_lives() < 0:
             self.__engine.running = False
